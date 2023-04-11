@@ -45,5 +45,13 @@ class LearningGraph{
         // creating the graph array of Arraylist type Edge and size V=4;
 
         ArrayList<Edge> graph [] = new ArrayList [V];
+
+        createGraph(graph);
+
+        // print the 2's neighbours
+        for(int i =0;i<graph[2].size(); i++){
+            Edge e = graph[2].get(i);
+            System.out.print(e.dest+" ");
+        }
     }
 }
