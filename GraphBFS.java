@@ -43,7 +43,45 @@ public class GraphBFS {
         graph[6].add(new Edge(6,5));
 
     }
+
+    // creating the fucntion BFS 
+    public static void bFS(ArrayList <Edge> graph [], int v){
+
+        // first of all we have to do two things 
+        // 1st create the Queue to perform BFS
+        // 2nd create the Visited boolean array to identify the visited nodes.
+        Queue<Integer> q = new LinkedList<>();
+
+        boolean vist [] = new boolean [v];
+
+        // we have to add the starting point of the graph..
+        q.add(0);
+        while(!q.isEmpty()){
+            int cur = q.remove();
+
+            if(vist[cur]== false){
+                // three rule for visiting, first print the node, mark as visited, add their neighbor,
+                // step first printing.
+                System.out.print(cur+" ");
+                //step 2 marks as true(visited).
+                vist[cur] = true;
+                // step 3 add their neighbours..
+                for(int i =0; i<graph[cur].size(); i++){
+                    Edge e = graph[cur].get(i);
+                    // all of the neighbor will add into the queue.
+                    q.add(e.dest);
+                }
+
+
+            }
+        }
+
+
+
+    }
     
+
+
     public static void main(String [] args){
         int v =7;
         ArrayList<Edge> graph [] = new ArrayList[v];
@@ -51,7 +89,7 @@ public class GraphBFS {
         // creating the grpah...
         createGraph(graph);
 
-        
+        bFS(graph, v);
 
     }
     
