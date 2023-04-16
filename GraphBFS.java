@@ -94,3 +94,15 @@ public class GraphBFS {
     }
     
 }
+/*
+ * BFS breadth first search is a traversal algorithm that starts at the root
+ *  (or another arbitrarily selected node) and explores all the neighbors nodes at the current depth 
+ * before moving on the next depth.
+ * This algorithm uses a queue to keep track of the nodes to visit next.
+ * 
+ * steps --
+ *  1) Create Queue and add the starting node to it
+ *  2) while the queue is not empty, remove the node from the queue and make it as visited.
+ *  3) Add all unvisited neighbors of the node to the queue.
+ *  4) Repeat steps 2 and 3 untill the queue is empty.
+ */
