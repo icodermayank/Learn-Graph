@@ -1,3 +1,4 @@
+import java.security.GeneralSecurityException;
 import java.util.*;
 
 public class GraphTraversal {
@@ -69,6 +70,41 @@ public class GraphTraversal {
                 }
             }
         }
+
+
+        // creating the fucntion for depth first traversal..
+        
+        static void dfs(ArrayList<Edge> graph [], int v, int start){
+            // first create the stack for dfs traversal..
+            Stack<Integer> s = new Stack();
+
+            // create the boolean type array visited..
+            boolean vist [] = new boolean [v];
+
+            // add the start into stack 
+            s.push(start);
+
+            while(!s.isEmpty()){
+                
+                int cur = s.pop();
+
+                if(vist[cur] == false){
+                    // print the top of the stack and make them visited..
+                    System.out.print(cur+" ");
+                    vist[cur] = true;
+
+                    // add their neighbour into the stack..
+
+                    for(int i =0; i<graph[cur].size(); i++){
+                        Edge e = graph[cur].get(i);
+
+                        s.push(e.dest);
+                    }
+                }
+            }
+        }
+
+
     public static void main(String [] args){
         int v = 7;
         ArrayList <Edge> graph [] = new ArrayList [v];
@@ -76,8 +112,15 @@ public class GraphTraversal {
         // calling the function createGraph to create graph..
         createGraph(graph);
 
-        int start = 6;
+        int start = 4;
+        System.out.println("Breadth First Search Traversal.");
         bfs(graph, v, start);
+
+
+        System.out.println();
+
+        System.out.println("Depth First Search Traversal");
+        dfs(graph, v, start);
 
 
     }
