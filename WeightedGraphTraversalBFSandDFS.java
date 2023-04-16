@@ -71,6 +71,40 @@ class WeightedGraphTraversalBFSandDFS{
             }
         }
     }
+
+
+    // function for the depth first search traversal in graph ..
+    static void dfs(ArrayList <Edge> graph [], int v, int start){
+        // creating the stack to store the node of the graph..
+        Stack<Integer> s = new Stack<>();
+
+        // create the boolean array visited to mark them visited..
+        boolean vist [] = new boolean[v];
+
+        // add the start node into the stack..
+        s.push(start);
+
+        while(!s.isEmpty()){
+            // pop the current node 
+            int cur = s.pop();
+            // check either visited or not..
+
+            if(vist[cur] == false){
+                // print the cur node
+                System.out.print(cur+" ");
+                // mark them visited..
+                vist[cur] = true;
+
+                // add their neighbor into the stack..
+                for(int i =0; i<graph[cur].size(); i++){
+                    Edge e = graph[cur].get(i);
+
+                    // push their neighbor into the graph..
+                    s.push(e.dest);
+                }
+            }
+        }
+    }
     public static void main(String [] args){
 
         int v = 7;
@@ -78,9 +112,11 @@ class WeightedGraphTraversalBFSandDFS{
         ArrayList <Edge> graph [] = new ArrayList [v];
         createGraph(graph);
 
-        int start = 2;
+        int start = 5;
         System.out.println("Breadth First Traversal.");
         bfs(graph, v, start);
+        System.out.println("\nDepth First Search Traversal.");
+        dfs(graph, v, start);
 
 
     }
