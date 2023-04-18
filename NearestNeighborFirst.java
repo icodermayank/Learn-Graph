@@ -45,14 +45,15 @@ public class NearestNeighborFirst {
 
 
      // function to find the nearest neighbor 
-     
+
      static void nearestNeighbor(ArrayList <Edge> graph [], int start){
         int nearest = Integer.MAX_VALUE;
         int node =0;
-
+        // Iterate through all the edges of the starting node.
         for(int i =0; i<graph[start].size(); i++){
             Edge e = graph[start].get(i);
 
+             // Check if the current edge has a smaller weight than the previous smallest weight.
             if(nearest  > e.wt){ 
                 nearest = e.wt;
                 node = e.dest;  
@@ -68,10 +69,9 @@ public class NearestNeighborFirst {
 
         createGraph(graph);
 
-        // finding the nearest neighbour
         int start = 4; // starting node.
 
-        nearestNeighbor(graph, start);
+        nearestNeighbor(graph, start);  // Find the nearest neighbor.
     }
     
 }
