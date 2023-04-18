@@ -43,26 +43,35 @@ public class NearestNeighborFirst {
         graph[6].add(new Edge(6, 5, 4));
      }
 
+
+     // function to find the nearest neighbor 
+     
+     static void nearestNeighbor(ArrayList <Edge> graph [], int start){
+        int nearest = Integer.MAX_VALUE;
+        int node =0;
+
+        for(int i =0; i<graph[start].size(); i++){
+            Edge e = graph[start].get(i);
+
+            if(nearest  > e.wt){ 
+                nearest = e.wt;
+                node = e.dest;  
+            } 
+        }
+        System.out.println("Nearest Neighbor of "+start+" is: "+ node);
+
+     }
+
     public static void main(String args[]){
         int v = 7;
         ArrayList<Edge> graph [] = new ArrayList [v];
 
         createGraph(graph);
 
-        
         // finding the nearest neighbour
-        int start = 4;
-        int nearest = Integer.MAX_VALUE;
-        int node =0;
-        for(int i =0; i<graph[start].size(); i++){
-            Edge e = graph[start].get(i);
-            // finding the nearest neighbor..
-            if(nearest  > e.wt){
-                nearest = e.wt;
-                node = e.dest;
-            } 
-        }
-        System.out.println("Nearest Neighbor of "+start+" is: "+ node);
+        int start = 4; // starting node.
+
+        nearestNeighbor(graph, start);
     }
     
 }
