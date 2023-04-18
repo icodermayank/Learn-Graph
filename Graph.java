@@ -142,9 +142,11 @@ public class Graph {
 // check if not is not visited so make them visited and call the printallpath function
 // and make them unvisited again.
             if(!vist[e.dest]){
-                vist[cur] = true;
+                vist[cur] = true; // avoid looping make the current as visited.
+                
+                // recursivly call the fun for next path..
                 printAllPath(graph, vist, path+e.dest, e.dest, tar);
-                vist[cur] = false;
+                vist[cur] = false; // make the current as unvisited so that another path can be found.
             }
 
         }
