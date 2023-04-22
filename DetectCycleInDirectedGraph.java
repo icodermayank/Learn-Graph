@@ -24,7 +24,31 @@ public class DetectCycleInDirectedGraph {
     }
     // fucntion to detect cycle.
     static boolean isCycle(ArrayList <Edge> graph [], boolean vist[], int cur, boolean rec[]){
-        
+        // at any level mark cur as true.
+        vist [cur] = true;
+        // add into recursion stack.
+        rec [cur] = true;
+
+        // applying loop for all the neighbors.
+        for(int i =0; i<graph[cur].size(); i++){
+            Edge e = graph[cur].get(i);
+
+            // if this neighbor is exists in recursion stack 
+            if(rec[e.dest]){ // if it became true then cycle exists 
+                return true;
+            }
+            else if(!vist[e.dest]){ // vist[neighbor] is false then mark it visited.
+                if(isCycle(graph, vist, e.dest, rec)){
+                    return true;
+                }
+                    // time complexity O(E+V);
+            }
+        }
+
+        // remove from the recursion stack
+        rec[cur] = false;
+        // retun false means no cycle exists.
+        return false;
     }
     // creating main method..
     public static void main(String [] args){
@@ -35,6 +59,8 @@ public class DetectCycleInDirectedGraph {
         createGraph(graph);
 
         // detection of cycle.
+
+        System.out.println(isCycle(graph, new boolean [v], 0 , new boolean[v]));
 
     }
 }
