@@ -36,16 +36,21 @@ public class DetectCycleUnDirectedGraph {
         for(int i =0; i<graph[cur].size(); i++){
             Edge e = graph[cur].get(i);
 
+            // Neighbor is already visited but not parrent so cycle exists.
             if(vis[e.dest] && parrent != e.dest){
             return true;
             }
 
+            // if node is not visited then visit it, if it return true means cycle exists.
+            // then return true to the main function.
+            // if return false then no action taken.
            else if(!vis[e.dest]){
                 if(detectCycle(graph, vis, e.dest, cur)){
                     return true;
                 }
             }
         }
+        // finally rerturn false to the main function if cycle not exists in the graph.
         return false;
     }
 
